@@ -129,10 +129,9 @@ public let HeimdallrErrorNotAuthorized = 2
 
         var parameters = grant.parameters
         if let credentials = credentials {
+            parameters["client_id"] = credentials.id
             if let secret = credentials.secret {
-                request.setHTTPAuthorization(.basicAuthentication(username: credentials.id, password: secret))
-            } else {
-                parameters["client_id"] = credentials.id
+                parameters["client_secret"] = secret
             }
         }
 
